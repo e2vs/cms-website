@@ -19,11 +19,11 @@ include 'DB-alerts.php';
 <form method="post" action="?page=edit_post">
 
 	<div class="form-group">
-		<input type="text" name="post_title" class="form-control" value="<?php $db->showPost($post_id, 'title'); ?>">
+		<input type="text" name="post_title" class="form-control" value="<?php echo $db->getPost($post_id, 'title'); ?>">
 	</div>
 
 	<div class="form-group">
-		<textarea id="wysiwyg" name="post_content" class="form-control" rows="20"><?php $db->showPost($post_id, 'content'); ?></textarea>
+		<textarea id="wysiwyg" name="post_content" class="form-control" rows="20"><?php echo $db->getPost($post_id, 'content'); ?></textarea>
 	</div>
 
 	<div class="form-group">

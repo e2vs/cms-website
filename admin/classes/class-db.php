@@ -35,9 +35,9 @@ if (!class_exists('DB')) {
 		}
 
 	    /**
-	     * query post by post_id
+	     * Gets post by ID and column name
 	     */
-		public function showPost($post_id, $column) {
+		public function getPost($post_id, $column) {
 				
 			$sql = "SELECT * FROM posts 
 					WHERE post_id = '$post_id'
@@ -48,21 +48,21 @@ if (!class_exists('DB')) {
 			$row = $result->fetch_assoc();
 
 			if ($column == 'title') {
-				echo $row['post_title'];
+				return $row['post_title'];
 			}
 			if ($column == 'content') {
-				echo $row['post_content'];
+				return $row['post_content'];
 			}
 			if ($column == 'author') {
-				echo $row['post_author'];
+				return $row['post_author'];
 			}
 			if ($column == 'date') {
-				echo $row['post_date'];
+				return $row['post_date'];
 			}
 		}
 
 		/**
-		* insert new post
+		* Inserts new post
 		*/
 		public function newPost() {
 
@@ -98,7 +98,7 @@ if (!class_exists('DB')) {
 		}
 
 		/**
-		* show list of posts on admin panel
+		* Returns all posts as object
 		*/
 		public function getAllPosts() {
 
