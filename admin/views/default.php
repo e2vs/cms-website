@@ -9,10 +9,10 @@
 
 <!-- include content -->
 <?php
-if (isset($_GET['page'])) {
-	$page = $_GET['page'];
-	if (file_exists("views/" . $page . ".php")) {
-		include_once ($page . ".php");
+if (isset($_GET['s'])) {
+	$site = $_GET['s'];
+	if (file_exists("views/" . $site . ".php")) {
+		include_once ($site . ".php");
 	}
 	else {
 		echo "Sivua ei löydy.";

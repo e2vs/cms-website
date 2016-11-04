@@ -20,12 +20,13 @@ include 'DB-alerts.php';
 	</thead>
 	<tbody>
 	<?php 
-	foreach ($db->getAllPosts() as $row) {
+	$posts = $db->getAllPosts();
+	foreach ($posts as $post) {
 		echo 	'<tr>
-					<td>' . $row['post_title'] . '</td>
-					<td>' . $row['post_author'] . '</td>
-					<td>' . $row['post_date'] . '</td>
-					<td><form method="post" action="?page=post_list&id=' . $row['post_id'] . '" class="form-inline"><a class="btn btn-xs btn-info" href="?page=edit_post&id=' . $row['post_id'] .'">Muokkaa</a> <input type="submit" name="delete" class="btn btn-xs btn-danger" value="Poista"></form></td>
+					<td>' . $post['post_title'] . '</td>
+					<td>' . $post['post_author'] . '</td>
+					<td>' . $post['post_date'] . '</td>
+					<td><form method="post" action="?s=posts&id=' . $post['post_id'] . '" class="form-inline"><a class="btn btn-xs btn-info" href="?s=editpost&id=' . $post['post_id'] .'">Muokkaa</a> <input type="submit" name="delete" class="btn btn-xs btn-danger" value="Poista"></form></td>
 				</tr>';
 	}
 	

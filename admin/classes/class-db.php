@@ -118,6 +118,27 @@ if (!class_exists('DB')) {
 		}
 
 		/**
+		* Returns $limit amount latests posts as object
+		*/
+		public function getLimitedPosts($limit, $offset) {
+
+			$sql = "
+					SELECT * FROM posts 
+					ORDER BY post_id DESC 
+					LIMIT $limit OFFSET $offset
+					";
+
+			$result = $this->db_connection->query($sql);
+
+			if ($result->num_rows > 0) {
+				return $result;
+			}
+			else {
+				$this->errors[] = "Artikkeleita ei löytynyt.";
+			}
+		}
+
+		/**
 		* update post by id
 		*/
 		public function updatePost($post_id) {
@@ -129,7 +150,7 @@ if (!class_exists('DB')) {
 				
 				$sql = "
 						UPDATE posts 
-						SET post_title = $title, post_content = $content 
+						SET post_title = '$title', post_content = '$content' 
 						WHERE post_id = '$post_id'
 						";
 
